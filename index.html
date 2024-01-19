@@ -3,65 +3,67 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Consulta de Información de IP</title>
-  <!-- Agrega la CDN de Bootstrap -->
-  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Agrega tu propio CSS personalizado si es necesario -->
+  <title>Tabla de Geolocalización</title>
+  <!-- Enlaces a Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- Enlace a la fuente Montserrat (asegúrate de tener acceso a Internet) -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    th, td {
+      text-align: center;
+    }
+    th {
+      background-color: #3c02fa;
+      color: white;
+    }
+    /* Estilo para el título */
+    h1 {
+      text-align: center;
+      color: #3c02fa;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+  </style>
 </head>
 <body>
 
-<div class="container mt-4">
-  <h1 class="mb-4">Información de IP</h1>
-  <table class="table table-stripped">
-    <thead>
-      <tr>
-        <th scope="col">IP</th>
-        <th scope="col">Continente</th>
-        <th scope="col">Ciudad</th>
-        <th scope="col">Zona Horaria</th>
-      </tr>
-    </thead>
-    <tbody id="ipInfoTableBody">
-      <!-- Los datos de la API se mostrarán aquí -->
-    </tbody>
-  </table>
-</div>
+  <div class="container mt-5">
+    <!-- Título centrado -->
+    <h1>Información de IP del Cliente</h1>
 
-<!-- Agrega la CDN de jQuery y Popper.js (requerido para Bootstrap) -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-<!-- Agrega la CDN de Bootstrap -->
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-<script>
-  // Función para cargar los datos de la API y mostrarlos en la tabla
-  function cargarDatosIP() {
-    // Datos de muestra
-    const datosMuestra = [
-      { ip: '192.168.1.1', continent: 'América', city: 'Ciudad de Mexico', timezone: 'UTC-5:00' },
-      { ip: '192.168.1.2', continent: 'Europa', city: 'Paris    ', timezone: 'UTC+2:00' },
-      // Agrega más datos de muestra si es necesario
-    ];
-    // Actualiza la tabla con los datos de muestra y alterna los colores de las filas
-    const tableBody = document.getElementById('ipInfoTableBody');
-    tableBody.innerHTML = '';
-
-    datosMuestra.forEach((datos, index) => {
-      const colorFila = index % 2 === 0 ? 'bg-white' : 'bg-light';
-      tableBody.innerHTML += `
-        <tr class="${colorFila}">
-          <td>${datos.ip}</td>
-          <td>${datos.continent}</td>
-          <td>${datos.city}</td>
-          <td>${datos.timezone}</td>
+    <!-- Tabla con Bootstrap -->
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">IP</th>
+          <th scope="col">País</th>
+          <th scope="col">Continente</th>
+          <th scope="col">Zona Horaria</th>
         </tr>
-      `;
-    });
-  }
+      </thead>
+      <tbody>
+        <!-- Filas con valores de ejemplo -->
+        <tr>
+          <td id="ip">-</td>
+          <td id="pais">-</td>
+          <td id="continente">-</td>
+          <td id="zona">-</td>
+        </tr>        
+      </tbody>
+    </table>
 
-  // Llama a la función al cargar la página
-  cargarDatosIP();
-</script>
+  </div>
+
+  <!-- Enlaces a Bootstrap JS y jQuery -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+<script src="JS/main.js"></script>
 
 </body>
 </html>
